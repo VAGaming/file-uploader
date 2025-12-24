@@ -37,6 +37,11 @@ h2 {
   color: #f8f9fa;
 }
 
+.drop-zone i{
+  font-size: 64px;
+  margin-bottom: 10px;
+}
+
 .drop-zone.dragover {
   background: #f8f9fa;
   border-color: #212529;
