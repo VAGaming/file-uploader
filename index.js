@@ -42,12 +42,9 @@ function createPreview(file) {
   remove.className = "remove-btn";
   remove.innerHTML = '<i class="fa-solid fa-xmark"></i>';
   remove.onclick = () => {
-    item.classList.add("fade-out");
-    setTimeout(() => {
-      files = files.filter((f) => f !== file);
-      item.remove();
-      updateUploadButton();
-    }, 500);
+    files = files.filter((f) => f !== file);
+    item.remove();
+    updateUploadButton();
   };
 
   let media;
