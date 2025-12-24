@@ -40,11 +40,14 @@ function createPreview(file) {
 
   const remove = document.createElement("button");
   remove.className = "remove-btn";
-  remove.textContent = "×";
+  remove.innerHTML = '<i class="fa-solid fa-xmark"></i>';
   remove.onclick = () => {
-    files = files.filter((f) => f !== file);
-    item.remove();
-    updateUploadButton();
+    item.classList.add("fade-out");
+    setTimeout(() => {
+      files = files.filter((f) => f !== file);
+      item.remove();
+      updateUploadButton();
+    }, 500);
   };
 
   let media;
@@ -102,7 +105,7 @@ function fakeUpload(file) {
         files = files.filter((f) => f !== file);
         item.remove();
         updateUploadButton();
-      }, 500); 
+      }, 500);
     }
   }, 300);
 }

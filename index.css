@@ -41,6 +41,7 @@ h2 {
   background: #f8f9fa;
   border-color: #212529;
   color: #212529;
+  transition: all 0.3s ease;
 }
 
 .preview-list {
@@ -76,6 +77,11 @@ h2 {
   width: 22px;
   height: 22px;
   cursor: pointer;
+}
+
+.remove-btn i {
+  font-size: 14px;
+  color: white;
 }
 
 .progress-bg {
