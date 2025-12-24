@@ -38,10 +38,16 @@ function createPreview(file) {
   const item = document.createElement("div");
   item.className = "preview-item";
 
+  if (file.type === "application/pdf") {
+    item.classList.add("pdf-preview");
+  }
+
   const remove = document.createElement("button");
   remove.className = "remove-btn";
   remove.innerHTML = '<i class="fa-solid fa-xmark"></i>';
   remove.onclick = () => {
+    URL.revokeObjectURL(media.src);
+
     files = files.filter((f) => f !== file);
     item.remove();
     updateUploadButton();
@@ -76,6 +82,7 @@ function createPreview(file) {
 uploadBtn.onclick = () => {
   files.forEach((file) => fakeUpload(file));
 };
+
 function fakeUpload(file) {
   const { progress, status, item } = file._ui;
 
@@ -116,4 +123,5 @@ function updateUploadButton() {
     uploadBtn.textContent = "Tải tệp lên";
   }
 }
+
 updateUploadButton();
