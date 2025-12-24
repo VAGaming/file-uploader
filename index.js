@@ -24,14 +24,30 @@ fileInput.onchange = () => addFiles(fileInput.files);
 
 function addFiles(selected) {
   [...selected].forEach((file) => {
-    if (!file.type.startsWith("image/") && file.type !== "application/pdf")
+    if (!file.type.startsWith("image/") && file.type !== "application/pdf") {
+      showWarning(
+        `Tệp "${file.name}" không được hỗ trợ! Vui lòng chọn hình ảnh hoặc PDF.`
+      );
       return;
+    }
 
     files.push(file);
     createPreview(file);
   });
 
   updateUploadButton();
+}
+
+function showWarning(message) {
+  const warning = document.createElement("div");
+  warning.textContent = message;
+  warning.className = "warning";
+
+  document.querySelector(".upload-box").appendChild(warning);
+
+  setTimeout(() => {
+    warning.remove();
+  }, 3000);
 }
 
 function createPreview(file) {
